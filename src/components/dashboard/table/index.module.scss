@@ -1,0 +1,31 @@
+.table {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    th, tr {
+        height: 50px;
+    }
+    th {
+        text-align: left;
+        min-width: 200px;
+        background-color: #f9fafc;
+    }
+    tr {
+        border-bottom: 1px solid #f6f7f8;
+        font-size: 14px;
+    }
+    td {
+        white-space: nowrap; 
+        overflow: hidden; 
+        text-overflow: ellipsis;
+    }
+    th:first-child,
+    td:first-child {
+      padding-left: 80px;
+    }
+
+    th:last-child,
+    td:last-child {
+      padding-right: 80px;
+    }
+}

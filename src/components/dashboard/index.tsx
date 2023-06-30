@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../actions/products";
 import { AppDispatch } from "../../store";
 import { getProducts } from "../../selectors/products";
+import { Table } from "./table";
+
+import styles from './index.module.scss'
 
 export const Dashboard = () => {
     const products = useSelector(getProducts)
@@ -23,8 +26,8 @@ export const Dashboard = () => {
     const {products: productsList} = products;
     return <div>
         <h1>Dashboard page</h1>
-        {productsList?.map(product=>{
-            return <h2>{product.name}</h2>
-        })}
+        <div className={styles.container}>
+            <Table data={productsList}/>
+        </div>
     </div>
 };
