@@ -1,33 +1,36 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from "../../actions/products";
-import { AppDispatch } from "../../store";
-import { getProducts } from "../../selectors/products";
 import { Table } from "./table";
 
-import styles from './index.module.scss'
+import styles from "./index.module.scss";
+import { useDashboardState } from "./state/useDashboardState";
 
 export const Dashboard = () => {
-    const products = useSelector(getProducts)
-    const dispatch = useDispatch<AppDispatch>();
+  const { loading, hasError, filteredProducts, search } = useDashboardState();
 
-    useEffect(()=>{
-        dispatch(fetchProducts())
-    },[dispatch])
+  if (loading) {
+    return <h1>Loading...</h1>;
+  }
 
-    if(products.loading){
-        return <h1>Loading...</h1>
-    }
+  if (hasError) {
+    return <h1>Error</h1>;
+  }
 
-    if(products.error) {
-        return <h1>Error</h1>
-    }
-
-    const {products: productsList} = products;
-    return <div>
-        <h1>Dashboard page</h1>
-        <div className={styles.container}>
-            <Table data={productsList}/>
+  return (
+    <>
+      <div className={styles.content}>
+        <div className={styles.actions}>
+          <input
+            placeholder="Search..."
+            value={search.searchValue}
+            onChange={search.handleSearchChange}
+            className={styles.input}
+          />
+          <button className={styles.button}>Agregar</button>
         </div>
-    </div>
+
+        <div className={styles.container}>
+          <Table data={filteredProducts} />
+        </div>
+      </div>
+    </>
+  );
 };

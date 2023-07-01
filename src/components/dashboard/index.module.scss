@@ -1,5 +1,45 @@
-.container {
-    background-color: white;
-    color: black;
-    padding: 20px;
+.content {
+    padding: 80px 40px;
+    .container {
+        background-color: white;
+        color: black;
+        padding: 20px;
+    }
+    
+    .actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        margin-bottom: 10px;
+        .input {
+            background-color: white;
+            border: 1px solid #bebdbe;
+            height: 35px;
+            border-radius: 5px;
+            color: black;
+            padding: 0 5px;
+            &::placeholder {
+                color: #bebdbe;
+            }
+            &:hover,
+            &:focus,
+            &:active
+            &:focus-visible
+            {
+                background-color: white;
+                border: 1px solid #bebdbe;
+                outline: none;
+            }
+        }
+        
+        .button {
+            height: 50px;
+            background-color: #fcdc4a;
+            color: black;
+            &:hover
+            {
+                border-color: #fcdc4a;
+            }
+        }
+    }
 }
