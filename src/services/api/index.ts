@@ -11,22 +11,22 @@ export const BASE_URL = {
 export const callApi = async ({
   endpoint,
   microservice,
-  method,
+  method = HttpMethods.GET,
   data,
-  contentType = 'application/json',
-  accept = 'application/json',
-}:{
-    endpoint: string;
-    microservice: MicroserviceType;
-    method: HttpMethods;
-    data?: object;
-    contentType?: string;
-    accept?: string;
-}) =>  {
+  contentType = "application/json",
+  accept = "application/json",
+}: {
+  endpoint: string;
+  microservice: MicroserviceType;
+  method?: HttpMethods;
+  data?: object;
+  contentType?: string;
+  accept?: string;
+}) => {
   const headers = {
-    'Content-Type': contentType,
+    "Content-Type": contentType,
     Accept: accept,
-    authorId: '2310', // TODO: Handle user ID
+    authorId: "2310", // TODO: Handle user ID
   };
 
   const url = BASE_URL[microservice] + endpoint;
@@ -45,4 +45,4 @@ export const callApi = async ({
   }
 
   return await response.json();
-}
+};

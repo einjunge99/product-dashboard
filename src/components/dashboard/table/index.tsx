@@ -1,5 +1,5 @@
 import { IProduct } from "../../../reducers/products/interfaces";
-import { parseDate } from "../../../utils";
+import { formatDate } from "../../../utils";
 import { Avatar } from "../../common/avatar/index.tsx";
 import { DASHBOARD_COLUMNS, ProductKey } from "../constants";
 import styles from "./index.module.scss";
@@ -17,8 +17,8 @@ const onRenderValue = (column: string, row: IProduct) => {
     [ProductKey.logo]: () => {
       return <Avatar imageUrl={value} />;
     },
-    [ProductKey.date_release]: () => parseDate(value),
-    [ProductKey.date_revision]: () => parseDate(value),
+    [ProductKey.date_release]: () => formatDate(value),
+    [ProductKey.date_revision]: () => formatDate(value),
   };
 
   const renderValue = renderValues[column] || renderValues.default;

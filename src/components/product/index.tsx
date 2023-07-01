@@ -5,10 +5,17 @@ import styles from "./index.module.scss";
 import { useProductState } from "./state/useProductState";
 
 export const Product = () => {
-  const { onSubmit, handleSubmit, register, errors, isValid, reset } =
-    useProductState();
+  const {
+    onSubmit,
+    handleSubmit,
+    register,
+    errors,
+    isValid,
+    reset,
+    isEditing,
+  } = useProductState();
   return (
-    <div>
+    <div className={styles.content}>
       <div className={styles.container}>
         <div className={styles.title}>Formulario de Registro</div>
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
@@ -21,6 +28,7 @@ export const Product = () => {
                 errorMessage={errors.id?.message}
                 customRules={FORM_RULES.id}
                 className={styles.input}
+                disabled={isEditing}
               />
               <Input
                 label="Nombre"

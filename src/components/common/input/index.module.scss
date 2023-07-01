@@ -5,6 +5,9 @@
     border-radius: 5px;
     color: black;
     padding: 0 5px;
+    width: -moz-available;
+    width: -webkit-fill-available;
+    width: fill-available;
     &::placeholder {
         color: #bebdbe;
     }

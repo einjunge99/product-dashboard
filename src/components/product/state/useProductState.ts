@@ -1,16 +1,32 @@
 import { useForm } from "react-hook-form";
 import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  createProduct,
+  editProduct,
+  fetchProducts,
+} from "../../../actions/products";
+import { AppDispatch } from "../../../store";
+import { useParams } from "react-router-dom";
+import { getProducts } from "../../../selectors/products";
+import { IProduct } from "../../../reducers/products/interfaces";
+import { parseDateToInput } from "../../../utils";
 
-export type Inputs = {
-  id: number;
-  name: string;
-  description: string;
-  logo: string;
-  date_release: string;
-  date_revision: string;
-};
-
+//TODO: Handle productId not found
 export const useProductState = () => {
+  const { id } = useParams<{ id: string }>();
+  const dispatch = useDispatch<AppDispatch>();
+  const { products } = useSelector(getProducts);
+
+  const isEditing = !!id;
+
+  useEffect(() => {
+    if (!isEditing) {
+      return;
+    }
+    dispatch(fetchProducts());
+  }, [dispatch, isEditing]);
+
   const {
     register,
     handleSubmit,
@@ -18,13 +34,33 @@ export const useProductState = () => {
     watch,
     setValue,
     reset,
-  } = useForm<Inputs>({
+  } = useForm<IProduct>({
     mode: "onChange",
   });
 
-  const onSubmit = (data: Inputs) => {
-    console.log(data);
-    //TODO: Add data handling...
+  useEffect(() => {
+    if (!isEditing) {
+      return;
+    }
+    const product = products?.find((product) => {
+      return product.id === id;
+    });
+    if (product) {
+      //TODO: Fix product not being shown
+      reset({
+        ...product,
+        date_release: parseDateToInput(product.date_release),
+        date_revision: parseDateToInput(product.date_revision),
+      });
+    }
+  }, [id, products, isEditing, reset]);
+
+  const onSubmit = (data: IProduct) => {
+    if (isEditing) {
+      dispatch(editProduct(data));
+      return;
+    }
+    dispatch(createProduct(data));
   };
 
   const dateRelease = watch("date_release");
@@ -44,5 +80,6 @@ export const useProductState = () => {
     errors,
     isValid,
     reset,
+    isEditing,
   };
 };
