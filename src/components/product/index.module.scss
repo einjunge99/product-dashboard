@@ -1,0 +1,32 @@
+.container {
+    background-color: white;
+    width: 100%;
+    .title {
+        padding: 20px 0;
+        border-bottom: 1px solid black;
+        color: black;
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+    }
+    .form {
+        padding: 10px 25px 25px;
+        .buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 60px;
+        }
+        .inputs {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            .row {
+                display: flex;
+                gap: 10px;
+                .input {
+                    flex-basis: 50%;
+                }
+            }
+        }
+    }
+}

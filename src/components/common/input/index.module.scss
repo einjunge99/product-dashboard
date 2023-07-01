@@ -1,0 +1,43 @@
+.input {
+    background-color: white;
+    border: 1px solid #bebdbe;
+    height: 35px;
+    border-radius: 5px;
+    color: black;
+    padding: 0 5px;
+    &::placeholder {
+        color: #bebdbe;
+    }
+    &:hover,
+    &:focus,
+    &:active
+    &:focus-visible
+    {
+        background-color: white;
+        border: 1px solid #bebdbe;
+        outline: none;
+    }
+    &.hasError {
+        border-color: #e87576;
+    }
+    &.disabled {
+        background-color: #f6f6f6;
+        color: #dcdcdc;
+        border-color: #e4e4e4;
+    }
+}
+
+.label {
+    color: black;
+    font-size: 12px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    &.disabled {
+        color: #e4e4e4
+    }
+}
+
+.errorMessage {
+    color: #e87576;
+    font-size: 10px;
+}

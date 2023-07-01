@@ -2,6 +2,8 @@ import { Table } from "./table";
 
 import styles from "./index.module.scss";
 import { useDashboardState } from "./state/useDashboardState";
+import { Input } from "../common/input";
+import { Button } from "../common/button";
 
 export const Dashboard = () => {
   const { loading, hasError, filteredProducts, search } = useDashboardState();
@@ -15,22 +17,19 @@ export const Dashboard = () => {
   }
 
   return (
-    <>
-      <div className={styles.content}>
-        <div className={styles.actions}>
-          <input
-            placeholder="Search..."
-            value={search.searchValue}
-            onChange={search.handleSearchChange}
-            className={styles.input}
-          />
-          <button className={styles.button}>Agregar</button>
-        </div>
-
-        <div className={styles.container}>
-          <Table data={filteredProducts} />
-        </div>
+    <div className={styles.content}>
+      <div className={styles.actions}>
+        <Input
+          placeholder="Search..."
+          value={search.searchValue}
+          onChange={search.handleSearchChange}
+        />
+        <Button>Agregar</Button>
       </div>
-    </>
+
+      <div className={styles.container}>
+        <Table data={filteredProducts} />
+      </div>
+    </div>
   );
 };
