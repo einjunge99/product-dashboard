@@ -1,19 +1,24 @@
 import cx from "classnames";
 import styles from "./index.module.scss";
 import { RegisterOptions } from "react-hook-form";
+import { ChangeEvent } from "react";
 
 interface IProps {
-  onChange?;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
   label?: string;
   errorMessage?: string;
   disabled?: boolean;
-  register?;
   name?: string;
   customRules?: RegisterOptions;
   type?: string;
-  className?;
+  className?: string;
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   value?;
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  register?;
 }
 
 export const Input = ({

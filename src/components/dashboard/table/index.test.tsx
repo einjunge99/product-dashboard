@@ -93,6 +93,8 @@ describe("Table component", () => {
       DASHBOARD_COLUMNS.forEach(({ key }) => {
         const value = rowData[key];
 
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         if (key === "logo" || key === "actions") {
           return;
         }

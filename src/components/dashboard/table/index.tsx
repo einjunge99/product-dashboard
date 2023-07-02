@@ -66,6 +66,8 @@ export const Table = (props: IProps) => {
       );
     }
 
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     return data.map((data) => {
       const values = DASHBOARD_COLUMNS.map(({ key }) => {
         return { key, value: onRenderValue(key, data) };
