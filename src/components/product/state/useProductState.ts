@@ -54,7 +54,7 @@ export const useProductState = () => {
       date_release: parseDateToInput(product.date_release),
       date_revision: parseDateToInput(product.date_revision),
     });
-  }, [id, products, isEditing, reset]);
+  }, [id, products, isEditing, reset, history]);
 
   const onSubmit = (data: IProduct) => {
     if (isEditing) {
@@ -65,8 +65,13 @@ export const useProductState = () => {
   };
 
   const resetFields = () => {
-    //TODO: Validate if it's possible to keep id from reseting
-    reset();
+    reset({
+      date_release: "",
+      date_revision: "",
+      description: "",
+      logo: "",
+      name: "",
+    });
   };
 
   const dateRelease = watch("date_release");

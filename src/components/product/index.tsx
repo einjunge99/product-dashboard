@@ -80,11 +80,7 @@ export const Product = () => {
             </div>
           </div>
           <div className={styles.buttons}>
-            <Button
-              onClick={resetFields}
-              variant={"secondary"}
-              disabled={isEditing}
-            >
+            <Button onClick={resetFields} variant={"secondary"}>
               Reiniciar
             </Button>
             <Button type="submit" disabled={!isValid}>
