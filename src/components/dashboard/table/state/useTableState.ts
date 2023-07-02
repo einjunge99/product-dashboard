@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import { deleteProduct } from "../../../../actions/products";
 import { AppDispatch } from "../../../../store";
 import { useHistory } from "react-router-dom";
-import { removeProduct } from "../../../../reducers/products";
 
 export const useTableState = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -26,7 +25,6 @@ export const useTableState = () => {
         id: productId,
       })
     );
-    dispatch(removeProduct({ productId }));
   };
 
   return {
