@@ -15,6 +15,7 @@ export const callApi = async ({
   data,
   contentType = "application/json",
   accept = "application/json",
+  queryParams,
 }: {
   endpoint: string;
   microservice: MicroserviceType;
@@ -22,6 +23,7 @@ export const callApi = async ({
   data?: object;
   contentType?: string;
   accept?: string;
+  queryParams?: object;
 }) => {
   const headers = {
     "Content-Type": contentType,
@@ -29,7 +31,14 @@ export const callApi = async ({
     authorId: "2310", // TODO: Handle user ID
   };
 
-  const url = BASE_URL[microservice] + endpoint;
+  const queryString = Object.entries(queryParams || {})
+    .map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
+    .join("&");
+
+  let url = BASE_URL[microservice] + endpoint;
+  if (queryString) {
+    url += "?" + queryString;
+  }
 
   const config = {
     method,

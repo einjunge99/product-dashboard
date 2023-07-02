@@ -6,7 +6,8 @@ import { Input } from "../common/input";
 import { Button } from "../common/button";
 
 export const Dashboard = () => {
-  const { loading, hasError, filteredProducts, search } = useDashboardState();
+  const { loading, hasError, filteredProducts, search, navigateToProducts } =
+    useDashboardState();
 
   if (loading) {
     return <h1>Loading...</h1>;
@@ -24,7 +25,7 @@ export const Dashboard = () => {
           value={search.searchValue}
           onChange={search.handleSearchChange}
         />
-        <Button>Agregar</Button>
+        <Button onClick={navigateToProducts}>Agregar</Button>
       </div>
 
       <div className={styles.container}>

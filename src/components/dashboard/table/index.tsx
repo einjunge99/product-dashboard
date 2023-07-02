@@ -3,6 +3,7 @@ import { formatDate } from "../../../utils";
 import { Avatar } from "../../common/avatar/index.tsx";
 import { DASHBOARD_COLUMNS, ProductKey } from "../constants";
 import styles from "./index.module.scss";
+import { useTableState } from "./state/useTableState.ts";
 
 interface IProps {
   data: object[] | null;
@@ -10,7 +11,6 @@ interface IProps {
 
 const onRenderValue = (column: string, row: IProduct) => {
   const value = row[column];
-  console.log("VALUE", value);
 
   const renderValues = {
     default: () => value,
@@ -26,6 +26,9 @@ const onRenderValue = (column: string, row: IProduct) => {
 };
 
 export const Table = (props: IProps) => {
+  const { showMenu, handleMenuClick, handleDelete, handleEdit } =
+    useTableState();
+
   const renderHeader = () => {
     return (
       <tr>
@@ -57,6 +60,28 @@ export const Table = (props: IProps) => {
       return (
         <tr key={data.id}>
           {values.map(({ key, value }) => {
+            if (key === "actions") {
+              return (
+                <td>
+                  <div className={styles.actions}>
+                    <button
+                      className={styles.menuButton}
+                      onClick={() => handleMenuClick(data.id)}
+                    >
+                      ...
+                    </button>
+                    {showMenu[data.id] && (
+                      <div className={styles.popupMenu}>
+                        <div onClick={() => handleEdit(data.id)}>Editar</div>
+                        <div onClick={() => handleDelete(data.id)}>
+                          Eliminar
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </td>
+              );
+            }
             return <td key={`${data.id}_${key}`}>{value}</td>;
           })}
         </tr>

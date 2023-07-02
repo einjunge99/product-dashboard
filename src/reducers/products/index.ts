@@ -15,7 +15,17 @@ const initialState: IProductsStore = {
 const productsSlice = createSlice({
   name: "products",
   initialState,
-  reducers: {},
+  reducers: {
+    removeProduct: (state, action: PayloadAction<{ productId: string }>) => {
+      if (!state.products) {
+        return;
+      }
+      const { productId } = action.payload;
+      state.products = state.products.filter(
+        (product) => product.id !== productId
+      );
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchProducts.pending, (state) => {
@@ -58,8 +68,6 @@ const productsSlice = createSlice({
   },
 });
 
-// export const {
-
-// } = productsSlice.actions;
+export const { removeProduct } = productsSlice.actions;
 
 export const productsReducer = productsSlice.reducer;

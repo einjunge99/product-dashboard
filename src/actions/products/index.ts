@@ -33,3 +33,15 @@ export const editProduct = createAsyncThunk(
     });
   }
 );
+
+export const deleteProduct = createAsyncThunk(
+  "products/delete",
+  async (queryParams: object) => {
+    return await callApi({
+      endpoint: "/bp/products",
+      microservice: MicroserviceType.PRODUCTS,
+      method: HttpMethods.DELETE,
+      queryParams,
+    });
+  }
+);

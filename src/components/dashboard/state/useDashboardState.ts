@@ -3,11 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../../../store";
 import { getProducts } from "../../../selectors/products";
 import { fetchProducts } from "../../../actions/products";
+import { useHistory } from "react-router-dom";
 
 export const useDashboardState = () => {
   const products = useSelector(getProducts);
   const dispatch = useDispatch<AppDispatch>();
   const [searchValue, setSearchValue] = useState<string>();
+  const history = useHistory();
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -30,6 +32,10 @@ export const useDashboardState = () => {
     );
   };
 
+  const navigateToProducts = () => {
+    history.push("/product");
+  };
+
   return {
     loading: products.loading,
     hasError: !!products.error,
@@ -38,5 +44,6 @@ export const useDashboardState = () => {
       searchValue,
       handleSearchChange,
     },
+    navigateToProducts,
   };
 };

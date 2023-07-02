@@ -10,20 +10,24 @@
     th, tr {
         height: 50px;
     }
-    th {
+    th:not(:last-child) {
         text-align: left;
         min-width: 200px;
+        background-color: #f9fafc;
+    }
+    th:last-child {
+        width: 10px;
         background-color: #f9fafc;
     }
     tr {
         border-bottom: 1px solid #f6f7f8;
         font-size: 14px;
     }
-    td {
+    td:not(:last-child) {
         white-space: nowrap; 
         overflow: hidden; 
         text-overflow: ellipsis;
-    }
+    }    
     th:first-child,
     td:first-child {
       padding-left: 80px;
@@ -31,6 +35,35 @@
 
     th:last-child,
     td:last-child {
-      padding-right: 80px;
+      padding-right: 40px;
+    }
+}
+
+
+.actions {
+    position: relative;
+    display: inline-block;
+    .menuButton {
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: black;
+    }
+    .popupMenu {
+        position: absolute;
+        background-color: #fff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        z-index: 1;
+        top: -40px;
+        // left: 30px;
+        left: -80px;
+        div {
+            padding: 8px;
+            cursor: pointer;
+            color: black;
+            &:hover{
+                background-color: #f9fafc;
+            }
+        }
     }
 }
