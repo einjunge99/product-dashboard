@@ -41,7 +41,7 @@ describe("Table component", () => {
     const { getByText } = render(
       <Table data={null} loading={true} isSearching={false} />
     );
-    const loadingMessage = getByText("...");
+    const loadingMessage = getByText("Cargando...");
 
     expect(loadingMessage).toBeInTheDocument();
   });
@@ -50,7 +50,7 @@ describe("Table component", () => {
     const { getByText } = render(
       <Table data={[]} loading={false} isSearching={false} />
     );
-    const emptyMessage = getByText("...");
+    const emptyMessage = getByText("Cargando...");
 
     expect(emptyMessage).toBeInTheDocument();
   });

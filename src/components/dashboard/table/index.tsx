@@ -5,6 +5,7 @@ import { Avatar } from "../../common/avatar/index.tsx";
 import { DASHBOARD_COLUMNS, ProductKey } from "../constants";
 import styles from "./index.module.scss";
 import { useTableState } from "./state/useTableState.ts";
+import empty from "../../../assets/empty.png";
 
 interface IProps {
   data: IProduct[] | null;
@@ -42,13 +43,18 @@ export const Table = (props: IProps) => {
 
   const renderValues = () => {
     const { data, loading, isSearching } = props;
-    let message = null;
+    let message: JSX.Element | null = null;
     const isDataEmpty = !data || data.length === 0;
     if (loading || (isDataEmpty && !isSearching)) {
-      message = "...";
+      message = <h1>Cargando...</h1>;
     } else if (isDataEmpty && isSearching) {
-      message =
-        "¡Vaya, parece que no se encontró nada! Por favor, inténtalo nuevamente o verifica tus criterios de búsqueda.";
+      message = (
+        <div>
+          ¡Vaya, parece que no se encontró nada! Por favor, inténtalo nuevamente
+          o verifica tus criterios de búsqueda.
+          <img src={empty} alt="empty" />
+        </div>
+      );
     }
     if (message) {
       return (
