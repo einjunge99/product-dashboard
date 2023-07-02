@@ -1,10 +1,11 @@
+import moment from "moment";
+
 export const formatDate = (
   dateString: string,
-  format = "dd/mm/YYYY"
+  format = "DD/MM/YYYY"
 ): string => {
-  const date = new Date(dateString);
-  const formattedDate = date.toLocaleString();
-  return formattedDate;
+  const date = moment(dateString);
+  return date.format(format);
 };
 
 export const parseDateToInput = (dateString: string): string => {
