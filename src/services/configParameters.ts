@@ -1,9 +1,5 @@
-const {
-    VITE_API_DOMAIN,
-} = import.meta.env
+import { getEnviroments } from "../helpers/getEnvironments";
 
-const trim = (value: string) => {
-    return (value || '').trim();
-};
+const environment = getEnviroments();
 
-export const API_DOMAIN = trim(VITE_API_DOMAIN);
+export const API_DOMAIN = environment.VITE_API_DOMAIN;
