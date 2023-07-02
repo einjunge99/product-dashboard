@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Dashboard, Product } from "./components";
 import { Header } from "./components/layout/header";
 import { NotificationBar } from "./components/notification";
+import { NotFound } from "./components/layout/notFound";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <Route exact path="/product">
           <Product />
         </Route>
+        <Route component={NotFound} />
       </Switch>
       <NotificationBar />
     </Router>

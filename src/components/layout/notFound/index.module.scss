@@ -1,0 +1,12 @@
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+    color: black;
+    flex-direction: column;
+    button {
+        color: black;
+        cursor: pointer;
+    }
+}

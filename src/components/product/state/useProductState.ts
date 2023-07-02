@@ -7,16 +7,16 @@ import {
   fetchProducts,
 } from "../../../actions/products";
 import { AppDispatch } from "../../../store";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { getProducts } from "../../../selectors/products";
 import { IProduct } from "../../../reducers/products/interfaces";
 import { parseDateToInput } from "../../../utils";
 
-//TODO: Handle productId not found
 export const useProductState = () => {
   const { id } = useParams<{ id: string }>();
   const dispatch = useDispatch<AppDispatch>();
   const { products } = useSelector(getProducts);
+  const history = useHistory();
 
   const isEditing = !!id;
 
@@ -45,13 +45,15 @@ export const useProductState = () => {
     const product = products?.find((product) => {
       return product.id === id;
     });
-    if (product) {
-      reset({
-        ...product,
-        date_release: parseDateToInput(product.date_release),
-        date_revision: parseDateToInput(product.date_revision),
-      });
+    if (!product) {
+      history.push("/404");
+      return;
     }
+    reset({
+      ...product,
+      date_release: parseDateToInput(product.date_release),
+      date_revision: parseDateToInput(product.date_revision),
+    });
   }, [id, products, isEditing, reset]);
 
   const onSubmit = (data: IProduct) => {
