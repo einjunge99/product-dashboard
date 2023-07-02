@@ -1,11 +1,9 @@
-import * as config from "../configParameters";
+import { API_DOMAIN, AUTHOR_ID } from "../configParameters";
 import { HttpMethods } from "../constants/httpTypes";
 import { MicroserviceType } from "./microserviceType";
 
-const DOMAIN = config.API_DOMAIN;
-
 export const BASE_URL = {
-  [MicroserviceType.PRODUCTS]: `${DOMAIN}/ipf-msa-productosfinancieros`,
+  [MicroserviceType.PRODUCTS]: `${API_DOMAIN}/ipf-msa-productosfinancieros`,
 };
 
 export const callApi = async ({
@@ -28,7 +26,7 @@ export const callApi = async ({
   const headers = {
     "Content-Type": contentType,
     Accept: accept,
-    authorId: "2310", // TODO: Handle user ID
+    authorId: AUTHOR_ID,
   };
 
   const queryString = Object.entries(queryParams || {})
