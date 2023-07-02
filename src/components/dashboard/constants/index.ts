@@ -14,7 +14,10 @@ const COLUMN_TO_TITLE: { [Key in ProductKey]: string } = {
   [ProductKey.date_revision]: "Fecha de reestructuración",
 };
 
-export const DASHBOARD_COLUMNS = [
+export const DASHBOARD_COLUMNS: {
+  title: string;
+  key: ProductKey;
+}[] = [
   { title: COLUMN_TO_TITLE[ProductKey.logo], key: ProductKey.logo },
   { title: COLUMN_TO_TITLE[ProductKey.name], key: ProductKey.name },
   {
@@ -29,5 +32,7 @@ export const DASHBOARD_COLUMNS = [
     title: COLUMN_TO_TITLE[ProductKey.date_revision],
     key: ProductKey.date_revision,
   },
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   { title: "", key: "actions" },
 ];

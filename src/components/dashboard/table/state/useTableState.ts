@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 
 export const useTableState = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const [showMenu, setShowMenu] = useState({});
+  const [showMenu, setShowMenu] = useState<{ [k: string]: boolean }>({});
   const history = useHistory();
 
   const handleMenuClick = (productId: string) => {

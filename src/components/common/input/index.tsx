@@ -32,15 +32,17 @@ export const Input = ({
   return (
     <div className={className}>
       {!!label && (
-        <div
+        <label
+          htmlFor={name}
           className={cx(styles.label, {
             [styles.disabled]: disabled,
           })}
         >
           {label}
-        </div>
+        </label>
       )}
       <input
+        id={name}
         placeholder={placeholder}
         onChange={onChange}
         value={value}

@@ -11,7 +11,7 @@ export const Product = () => {
     register,
     errors,
     isValid,
-    reset,
+    resetFields,
     isEditing,
   } = useProductState();
   return (
@@ -80,7 +80,11 @@ export const Product = () => {
             </div>
           </div>
           <div className={styles.buttons}>
-            <Button onClick={() => reset()} variant={"secondary"}>
+            <Button
+              onClick={resetFields}
+              variant={"secondary"}
+              disabled={isEditing}
+            >
               Reiniciar
             </Button>
             <Button type="submit" disabled={!isValid}>

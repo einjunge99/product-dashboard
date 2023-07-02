@@ -6,16 +6,8 @@ import { Input } from "../common/input";
 import { Button } from "../common/button";
 
 export const Dashboard = () => {
-  const { loading, hasError, filteredProducts, search, navigateToProducts } =
+  const { loading, filteredProducts, search, navigateToProducts } =
     useDashboardState();
-
-  if (loading) {
-    return <h1>Loading...</h1>;
-  }
-
-  if (hasError) {
-    return <h1>Error</h1>;
-  }
 
   return (
     <div className={styles.content}>
@@ -29,7 +21,19 @@ export const Dashboard = () => {
       </div>
 
       <div className={styles.container}>
-        <Table data={filteredProducts} />
+        <Table
+          data={filteredProducts}
+          loading={loading}
+          isSearching={!!search.searchValue}
+        />
+        {filteredProducts && (
+          <div className={styles.pagination}>
+            <div
+              className={styles.results}
+            >{`${filteredProducts?.length} Resultados`}</div>
+            {/* TODO: Add pagination */}
+          </div>
+        )}
       </div>
     </div>
   );

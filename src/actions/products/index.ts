@@ -67,6 +67,8 @@ export const deleteProduct = createAsyncThunk(
         queryParams,
       });
       dispatch(showSuccess("Producto actualizado exitosamente!"));
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       dispatch(removeProduct({ productId: queryParams.id }));
       return response;
     } catch (error) {

@@ -1,15 +1,8 @@
-import { useSelector, useDispatch } from "react-redux";
-import { clearNotifications } from "../../reducers/notifications";
-import { getNotifications } from "../../selectors/notifications";
 import styles from "./index.module.scss";
+import { useNotificationState } from "./state/useNotificationState";
 
 export const NotificationBar = () => {
-  const { message, error } = useSelector(getNotifications);
-  const dispatch = useDispatch();
-
-  const handleCloseClick = () => {
-    dispatch(clearNotifications());
-  };
+  const { error, handleCloseClick, message } = useNotificationState();
 
   return (
     <div className={styles.content}>

@@ -22,7 +22,7 @@ export const useDashboardState = () => {
   const getFilteredProducts = () => {
     const { products: productsList } = products;
     if (!productsList) {
-      return [];
+      return null;
     }
     if (!searchValue) {
       return productsList;

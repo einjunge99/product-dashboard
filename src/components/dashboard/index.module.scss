@@ -4,6 +4,13 @@
         background-color: white;
         color: black;
         padding: 20px;
+
+        .pagination {
+            margin-top: 15px;
+            .results {
+                font-size: 14px;
+            }
+        }
     }
     
     .actions {

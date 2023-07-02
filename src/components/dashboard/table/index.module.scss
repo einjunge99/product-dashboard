@@ -38,32 +38,3 @@
       padding-right: 40px;
     }
 }
-
-
-.actions {
-    position: relative;
-    display: inline-block;
-    .menuButton {
-        background: none;
-        border: none;
-        cursor: pointer;
-        color: black;
-    }
-    .popupMenu {
-        position: absolute;
-        background-color: #fff;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        z-index: 1;
-        top: -40px;
-        // left: 30px;
-        left: -80px;
-        div {
-            padding: 8px;
-            cursor: pointer;
-            color: black;
-            &:hover{
-                background-color: #f9fafc;
-            }
-        }
-    }
-}

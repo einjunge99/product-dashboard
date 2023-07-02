@@ -46,7 +46,6 @@ export const useProductState = () => {
       return product.id === id;
     });
     if (product) {
-      //TODO: Fix product not being shown
       reset({
         ...product,
         date_release: parseDateToInput(product.date_release),
@@ -61,6 +60,11 @@ export const useProductState = () => {
       return;
     }
     dispatch(createProduct(data));
+  };
+
+  const resetFields = () => {
+    //TODO: Validate if it's possible to keep id from reseting
+    reset();
   };
 
   const dateRelease = watch("date_release");
@@ -79,7 +83,7 @@ export const useProductState = () => {
     register,
     errors,
     isValid,
-    reset,
+    resetFields,
     isEditing,
   };
 };
