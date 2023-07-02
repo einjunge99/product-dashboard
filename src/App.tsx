@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Dashboard, Product } from "./components";
-import { Header } from "./components/common/header";
+import { Header } from "./components/layout/header";
 import { NotificationBar } from "./components/notification";
 
 const App = () => {

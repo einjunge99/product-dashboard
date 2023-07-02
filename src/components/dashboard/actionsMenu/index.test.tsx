@@ -1,5 +1,5 @@
 import { render, fireEvent } from "@testing-library/react";
-import { ActionsMenu } from "./";
+import { ActionsMenu } from ".";
 
 describe("ActionsMenu component", () => {
   const mockHandleMenuClick = jest.fn();

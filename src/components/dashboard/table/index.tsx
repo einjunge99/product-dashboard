@@ -1,6 +1,6 @@
 import { IProduct } from "../../../reducers/products/interfaces";
 import { formatDate } from "../../../utils";
-import { ActionsMenu } from "../../common/actionsMenu/index.tsx";
+import { ActionsMenu } from "../actionsMenu/index.tsx";
 import { Avatar } from "../../common/avatar/index.tsx";
 import { DASHBOARD_COLUMNS, ProductKey } from "../constants";
 import styles from "./index.module.scss";
