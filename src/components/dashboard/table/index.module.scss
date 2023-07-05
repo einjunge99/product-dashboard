@@ -1,52 +1,56 @@
-.table {
-    table-layout: fixed;
-    width: 100%;
-    border-collapse: collapse;
-
-    .noValues {
-        text-align: center;
-        padding: 40px 0;
-        font-weight: bold;
-        div {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            img {
-                margin-top: 10px;
-                height: 100px;
-                width: 100px;
+.content {
+    overflow: scroll;
+    .table {
+        table-layout: fixed;
+        width: 100%;
+        min-width: 1100px;
+        border-collapse: collapse;
+    
+        .noValues {
+            text-align: center;
+            padding: 40px 0;
+            font-weight: bold;
+            div {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                img {
+                    margin-top: 10px;
+                    height: 100px;
+                    width: 100px;
+                }
             }
         }
-    }
-
-    th, tr {
-        height: 50px;
-    }
-    th:not(:last-child) {
-        text-align: left;
-        min-width: 200px;
-        background-color: #f9fafc;
-    }
-    th:last-child {
-        width: 10px;
-        background-color: #f9fafc;
-    }
-    tr {
-        border-bottom: 1px solid #f6f7f8;
-        font-size: 14px;
-    }
-    td:not(:last-child) {
-        white-space: nowrap; 
-        overflow: hidden; 
-        text-overflow: ellipsis;
-    }    
-    th:first-child,
-    td:first-child {
-      padding-left: 80px;
-    }
-
-    th:last-child,
-    td:last-child {
-      padding-right: 40px;
+    
+        th, tr {
+            height: 50px;
+        }
+        th:not(:last-child) {
+            text-align: left;
+            min-width: 200px;
+            background-color: #f9fafc;
+        }
+        th:last-child {
+            width: 10px;
+            background-color: #f9fafc;
+        }
+        tr {
+            border-bottom: 1px solid #f6f7f8;
+            font-size: 14px;
+        }
+        td:not(:last-child) {
+            white-space: nowrap; 
+            overflow: hidden; 
+            text-overflow: ellipsis;
+        }    
+        th:first-child,
+        td:first-child {
+          padding-left: 80px;
+        }
+    
+        th:last-child,
+        td:last-child {
+          padding-right: 40px;
+        }
     }
 }

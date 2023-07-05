@@ -98,9 +98,11 @@ export const Table = (props: IProps) => {
   };
 
   return (
-    <table className={styles.table}>
-      <thead>{renderHeader()}</thead>
-      <tbody>{renderValues()}</tbody>
-    </table>
+    <div className={styles.content}>
+      <table className={styles.table}>
+        <thead>{renderHeader()}</thead>
+        <tbody>{renderValues()}</tbody>
+      </table>
+    </div>
   );
 };

@@ -8,36 +8,37 @@
         color: black;
         cursor: pointer;
         border-radius: 4px;
-    }
 
-    .dropdown.open .selection {
-        border-bottom: none;
-    }
-      
-    .selection {
-        padding: 1px 5px 1px 20px;
-        display: flex;
-        align-items: center;
-        gap: 20px;
-    }
-      
-    .options {
-        text-align: center;
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        position: absolute;
-        left: -1px;
-        width: 100%;
-        border: 1px solid black;
-        background-color: white;
-
-        .option {
-            &:hover{
-                background-color: lightgray;
-            }
+        &.open {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
         }
-    } 
+
+        .selection {
+            padding: 1px 5px 1px 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+          
+        .options {
+            text-align: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            position: absolute;
+            left: -1px;
+            width: 100%;
+            border: 1px solid black;
+            background-color: white;
+    
+            .option {
+                &:hover{
+                    background-color: lightgray;
+                }
+            }
+        } 
+    }
 }
   
 
