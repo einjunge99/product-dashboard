@@ -21,6 +21,13 @@ export const Button = ({
   type,
   onClick,
 }: IProps) => {
+  const handleOnClick = () => {
+    if (disabled || !onClick) {
+      return;
+    }
+    onClick();
+  };
+
   return (
     <button
       disabled={disabled}
@@ -28,7 +35,7 @@ export const Button = ({
         styles.button,
         styles[ClassNamesByType[variant ?? "primary"]]
       )}
-      onClick={onClick}
+      onClick={handleOnClick}
       type={type}
     >
       {children}

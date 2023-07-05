@@ -5,11 +5,20 @@ import { getProducts } from "../../../selectors/products";
 import { fetchProducts } from "../../../actions/products";
 import { useHistory } from "react-router-dom";
 
+const ITEMS_PER_PAGE = 5;
+const PAGINATION_OPTIONS = Array.from(
+  { length: 3 },
+  (_, index) => ITEMS_PER_PAGE + index * 5
+);
+
 export const useDashboardState = () => {
   const products = useSelector(getProducts);
   const dispatch = useDispatch<AppDispatch>();
   const [searchValue, setSearchValue] = useState<string>();
   const history = useHistory();
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(ITEMS_PER_PAGE);
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -17,6 +26,7 @@ export const useDashboardState = () => {
 
   const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
+    setCurrentPage(1);
   };
 
   const getFilteredProducts = () => {
@@ -36,14 +46,46 @@ export const useDashboardState = () => {
     history.push("/product");
   };
 
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = getFilteredProducts()?.slice(
+    indexOfFirstItem,
+    indexOfLastItem
+  );
+
+  const totalPages = Math.ceil(
+    (getFilteredProducts()?.length || 0) / itemsPerPage
+  );
+
+  const resultsLegend = `${currentItems?.length} ${
+    currentItems?.length === 1 ? "Resultado" : "Resultados"
+  }`;
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
+
+  const handleItemsPerPageChange = (items: number) => {
+    setItemsPerPage(items);
+  };
+
   return {
     loading: products.loading,
     hasError: !!products.error,
-    filteredProducts: getFilteredProducts(),
+    currentItems,
     search: {
       searchValue,
       handleSearchChange,
     },
     navigateToProducts,
+    pagination: {
+      handlePageChange,
+      currentPage,
+      totalPages,
+      handleItemsPerPageChange,
+      options: PAGINATION_OPTIONS,
+      itemsPerPage,
+      resultsLegend,
+    },
   };
 };

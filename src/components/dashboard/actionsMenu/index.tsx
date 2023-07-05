@@ -1,3 +1,5 @@
+import { AiOutlineMore } from "react-icons/ai";
+import { Icon } from "../../common/icon";
 import styles from "./index.module.scss";
 
 interface IProps {
@@ -17,12 +19,10 @@ export const ActionsMenu = ({
 }: IProps) => {
   return (
     <div className={styles.actions}>
-      <button
-        className={styles.menuButton}
+      <Icon
+        icon={<AiOutlineMore />}
         onClick={() => handleMenuClick(productId)}
-      >
-        ...
-      </button>
+      />
       {showMenu && (
         <div className={styles.popupMenu}>
           <div onClick={() => handleEdit(productId)}>Editar</div>

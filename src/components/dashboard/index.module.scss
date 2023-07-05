@@ -7,6 +7,8 @@
 
         .pagination {
             margin-top: 15px;
+            display: flex;
+            justify-content: space-between;
             .results {
                 font-size: 14px;
             }

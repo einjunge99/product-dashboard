@@ -4,9 +4,11 @@ import styles from "./index.module.scss";
 import { useDashboardState } from "./state/useDashboardState";
 import { Input } from "../common/input";
 import { Button } from "../common/button";
+import { Pagination } from "./pagination";
 
+// TODO: Add min width and overflow...
 export const Dashboard = () => {
-  const { loading, filteredProducts, search, navigateToProducts } =
+  const { loading, currentItems, search, navigateToProducts, pagination } =
     useDashboardState();
 
   return (
@@ -22,17 +24,17 @@ export const Dashboard = () => {
 
       <div className={styles.container}>
         <Table
-          data={filteredProducts}
+          data={currentItems ?? null}
           loading={loading}
           isSearching={!!search.searchValue}
         />
-        {filteredProducts && (
-          <div className={styles.pagination}>
-            <div
-              className={styles.results}
-            >{`${filteredProducts?.length} Resultados`}</div>
-            {/* TODO: Add pagination */}
-          </div>
+        {!loading && (
+          <>
+            <div className={styles.pagination}>
+              <div className={styles.results}>{pagination.resultsLegend}</div>
+              <Pagination {...pagination} />
+            </div>
+          </>
         )}
       </div>
     </div>
