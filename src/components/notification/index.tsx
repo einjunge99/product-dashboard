@@ -1,3 +1,4 @@
+import cx from "classnames";
 import styles from "./index.module.scss";
 import { useNotificationState } from "./state/useNotificationState";
 
@@ -7,13 +8,13 @@ export const NotificationBar = () => {
   return (
     <div className={styles.content}>
       {message && (
-        <div className={styles.success}>
+        <div className={cx(styles.alert, styles.success)}>
           {message}
           <button onClick={handleCloseClick}>Cerrar</button>
         </div>
       )}
       {error && (
-        <div className={styles.error}>
+        <div className={cx(styles.alert, styles.danger)}>
           {error}
           <button onClick={handleCloseClick}>Cerrar</button>
         </div>

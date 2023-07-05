@@ -3,26 +3,24 @@
     top: 10px;
     right: 10px;
     z-index: 9999;
-}
 
-.success {
-    background-color: green;
-    color: white;
-    padding: 10px;
-    margin-bottom: 10px;
-}
-  
-.error {
-    background-color: red;
-    color: white;
-    padding: 10px;
-    margin-bottom: 10px;
-}
+    .alert {
+        color: white;
+        padding: 10px;
+        margin-bottom: 10px;
+        &.success {
+            background-color: green;
+        }
+        &.danger {
+            background-color: red;
+        }
 
-button {
-    background-color: transparent;
-    border: none;
-    color: white;
-    cursor: pointer;
-    margin-left: 10px;
+        button {
+            background-color: transparent;
+            border: none;
+            color: white;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+    }
 }
