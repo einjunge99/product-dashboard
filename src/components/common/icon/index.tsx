@@ -6,9 +6,16 @@ interface IProps {
   onClick?: () => void;
   disabled?: boolean;
   size?: string;
+  ["data-testid"]?: string;
 }
 
-export const Icon = ({ icon, disabled, onClick, size = "16px" }: IProps) => {
+export const Icon = ({
+  icon,
+  disabled,
+  onClick,
+  "data-testid": testId = "icon",
+  size = "16px",
+}: IProps) => {
   const handleClick = () => {
     if (disabled || !onClick) {
       return;
@@ -18,7 +25,7 @@ export const Icon = ({ icon, disabled, onClick, size = "16px" }: IProps) => {
 
   return (
     <div
-      data-testid="icon"
+      data-testid={testId}
       onClick={handleClick}
       className={cx(styles.icon, {
         [styles.disabled]: disabled,

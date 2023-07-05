@@ -8,12 +8,14 @@ interface IProps {
   options: number[];
   itemsPerPage: number;
   handleItemsPerPageChange: (items: number) => void;
+  ["data-testid"]?: string;
 }
 
 export const Dropdown = ({
   options,
   itemsPerPage,
   handleItemsPerPageChange,
+  "data-testid": testId = "dropdown",
 }: IProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -27,7 +29,7 @@ export const Dropdown = ({
   };
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} data-testid={testId}>
       <div
         className={cx(styles.dropdown, {
           [styles.open]: isOpen,

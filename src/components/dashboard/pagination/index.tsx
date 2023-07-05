@@ -24,12 +24,14 @@ export const Pagination = ({
         disabled={currentPage === 1}
         onClick={() => handlePageChange(currentPage - 1)}
         icon={<AiOutlineLeft />}
+        data-testid="previous"
       />
       <Dropdown {...rest} />
       <Icon
         disabled={currentPage === totalPages}
         onClick={() => handlePageChange(currentPage + 1)}
         icon={<AiOutlineRight />}
+        data-testid="next"
       />
     </div>
   );
