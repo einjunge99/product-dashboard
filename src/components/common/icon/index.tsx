@@ -18,6 +18,7 @@ export const Icon = ({ icon, disabled, onClick, size = "16px" }: IProps) => {
 
   return (
     <div
+      data-testid="icon"
       onClick={handleClick}
       className={cx(styles.icon, {
         [styles.disabled]: disabled,

@@ -13,12 +13,20 @@ jest.mock("./table", () => ({
 describe("Dashboard component", () => {
   const mockUseDashboardState = {
     loading: false,
-    filteredProducts: [],
+    currentItems: [],
     search: {
       searchValue: "",
       handleSearchChange: jest.fn(),
     },
     navigateToProducts: jest.fn(),
+    pagination: {
+      handlePageChange: jest.fn(),
+      handleItemsPerPageChange: jest.fn(),
+      currentPage: 1,
+      totalPages: 1,
+      options: [5, 10, 15],
+      resultsLegend: "",
+    },
   };
 
   beforeEach(() => {

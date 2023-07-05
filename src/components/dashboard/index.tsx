@@ -6,7 +6,6 @@ import { Input } from "../common/input";
 import { Button } from "../common/button";
 import { Pagination } from "./pagination";
 
-// TODO: Add min width and overflow...
 export const Dashboard = () => {
   const { loading, currentItems, search, navigateToProducts, pagination } =
     useDashboardState();
@@ -24,7 +23,7 @@ export const Dashboard = () => {
 
       <div className={styles.container}>
         <Table
-          data={currentItems ?? null}
+          data={currentItems}
           loading={loading}
           isSearching={!!search.searchValue}
         />

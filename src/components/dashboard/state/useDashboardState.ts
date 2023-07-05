@@ -48,10 +48,8 @@ export const useDashboardState = () => {
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = getFilteredProducts()?.slice(
-    indexOfFirstItem,
-    indexOfLastItem
-  );
+  const currentItems =
+    getFilteredProducts()?.slice(indexOfFirstItem, indexOfLastItem) ?? [];
 
   const totalPages = Math.ceil(
     (getFilteredProducts()?.length || 0) / itemsPerPage
